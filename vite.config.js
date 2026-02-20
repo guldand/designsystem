@@ -1,15 +1,12 @@
-import { resolve } from 'path';
+import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
+import { resolve } from 'path';
 
 export default defineConfig({
-  base: process.env.GITHUB_ACTIONS ? '/designsystem/' : '/',
-  build: {
-    rollupOptions: {
-      input: {
-        main: resolve(__dirname, 'index.html'),
-        components: resolve(__dirname, 'components/index.html'),
-        contact: resolve(__dirname, 'contact/index.html'),
-      },
+  plugins: [sveltekit()],
+  resolve: {
+    alias: {
+      'dkfds/dist/css/dkfds.css': resolve('node_modules/dkfds/dist/css/dkfds.css'),
     },
   },
 });
